@@ -2,7 +2,11 @@ import React from 'react'
 import './App.css'
 import Todo from './Todo'
 
-const App = () => {
+const App = (props) => {
+	const taskList = props.tasks.map((task) => (
+		<Todo id={task.id} name={task.name} completed={task.completed} />
+	))
+
 	return (
 		<div className="todoapp stack-large">
 			<h1>TodoMatic</h1>
@@ -34,9 +38,7 @@ const App = () => {
 				className="todo-list stack-large stack-exception"
 				aria-labelledby="list-heading"
 			>
-				<Todo name="Eat" completed={false} />
-				<Todo name="Sleep" completed={true} />
-				<Todo name="Repeat" completed={true} />
+				{taskList}
 			</ul>
 		</div>
 	)
